@@ -11,5 +11,13 @@ namespace FizzBuzz
         static void Main(string[] args)
         {
         }
+
+        public Program(ITransformService transformService)
+        {
+        }
+
+        public void Run()
+        {
+        }
     }
 }
