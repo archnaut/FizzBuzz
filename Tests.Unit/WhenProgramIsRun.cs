@@ -19,7 +19,7 @@ namespace Tests.Unit
 
             program.Run();
 
-            range.SequenceEqual(transformService.Sequence);
+            Assert.IsTrue(range.SequenceEqual(transformService.Sequence));
         }
 
         private class TransfromServiceStub : ITransformService
