@@ -13,7 +13,7 @@ namespace FizzBuzz
         {
         }
 
-        public Program(ITransformService transformService)
+        public Program(ITransformService transformService, IPrinter printer)
         {
         }
 

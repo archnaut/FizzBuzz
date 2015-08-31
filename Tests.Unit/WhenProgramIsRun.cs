@@ -10,23 +10,39 @@ namespace Tests.Unit
     [TestClass]
     public class WhenProgramIsRun
     {
+        IEnumerable<int> _range;
+        TransformServiceStub _transformService;
+        PrinterStub _printer;
+        Program _program;
+
+        [TestInitialize]
+        public void Initialize()
+        {
+            _range = Enumerable.Range(1, 100);
+            _transformService = new TransformServiceStub();
+            _printer = new PrinterStub();
+            _program = new Program(_transformService, _printer);
+
+            _program.Run();
+        }
+
         [TestMethod]
         public void ShouldTransformSequence()
         {
-            var transformService = new TransfromServiceStub();
-            var program = new Program(transformService);
-            var range = Enumerable.Range(1, 100);
-
-            program.Run();
-
-            Assert.IsTrue(range.SequenceEqual(transformService.Sequence));
+            Assert.IsTrue(_range.SequenceEqual(_transformService.Sequence));
         }
 
-        private class TransfromServiceStub : ITransformService
+        [TestMethod]
+        public void ShouldPrintValues()
+        {
+            Assert.IsTrue(_range.Select(x => x.ToString()).SequenceEqual(_printer.PrintedValues));
+        }
+
+        private class TransformServiceStub : ITransformService
         {
             private List<object> _sequence;
 
-            public TransfromServiceStub()
+            public TransformServiceStub()
             {
                 _sequence = new List<object>();
             }
@@ -41,6 +57,26 @@ namespace Tests.Unit
             public IEnumerable<int> Sequence
             {
                 get{return _sequence.Cast<int>();}
+            }
+        }
+
+        private class PrinterStub : IPrinter
+        {
+            private List<string> _values;
+
+            public PrinterStub()
+            {
+                _values = new List<string>();
+            }
+        
+            public void Print(string value)
+            {
+                _values.Add(value);
+            }
+
+            public IEnumerable<string> PrintedValues
+            {
+                get{return _values;}
             }
         }
     }
