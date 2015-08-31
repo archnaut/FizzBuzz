@@ -9,23 +9,27 @@ namespace FizzBuzz
     class Program
     {
         private ITransformService _transformService;
-        IEnumerable<int> range;
+        private IPrinter _printer;
+        private IEnumerable<int> _range;
+        
             
         static void Main(string[] args) 
         {
+            
         }
 
         public Program(ITransformService transformService, IPrinter printer)
         {
             _transformService = transformService;
-            range = Enumerable.Range(1, 100);
+            _range = Enumerable.Range(1, 100);
+            _printer = printer;
         }   
 
         public void Run()
         {
-            foreach (int i in range)
+            foreach (int i in _range)
             {
-                _transformService.Transform(i);
+                _printer.Print(_transformService.Transform(i));
             }
         }
     }
