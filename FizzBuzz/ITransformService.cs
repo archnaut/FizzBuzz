@@ -8,6 +8,6 @@ namespace FizzBuzz
 {
     interface ITransformService
     {
-        string Transform(object value);
+        string Transform(int value);
     }
 }

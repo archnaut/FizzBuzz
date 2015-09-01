@@ -40,14 +40,14 @@ namespace Tests.Unit
 
         private class TransformServiceStub : ITransformService
         {
-            private List<object> _sequence;
+            private List<int> _sequence;
 
             public TransformServiceStub()
             {
-                _sequence = new List<object>();
+                _sequence = new List<int>();
             }
 
-            public string Transform(object value)
+            public string Transform(int value)
             {
                 _sequence.Add(value);
 

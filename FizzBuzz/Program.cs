@@ -11,11 +11,12 @@ namespace FizzBuzz
         private ITransformService _transformService;
         private IPrinter _printer;
         private IEnumerable<int> _range;
-        
-            
+       
         static void Main(string[] args) 
         {
-            
+            Program p = new Program(new FizzBuzzService(), new ConsolePrinter());
+            p.Run();
+            Console.ReadKey();
         }
 
         public Program(ITransformService transformService, IPrinter printer)
@@ -23,7 +24,8 @@ namespace FizzBuzz
             _transformService = transformService;
             _range = Enumerable.Range(1, 100);
             _printer = printer;
-        }   
+        }
+               
 
         public void Run()
         {

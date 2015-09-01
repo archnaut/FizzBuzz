@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FizzBuzz
 {
-    internal class FizzBuzzService
+    internal class FizzBuzzService : ITransformService
     {
         public string Transform(int value)
         {
