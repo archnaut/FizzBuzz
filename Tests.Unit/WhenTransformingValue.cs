@@ -47,5 +47,12 @@ namespace Tests.Unit
             Assert.AreEqual("FizzBuzz", _fizzBuzzService.Transform(30));
             Assert.AreEqual("FizzBuzz", _fizzBuzzService.Transform(45));
         }
+
+        public void GivenValueDivisibleByThree()
+        {
+            Assert.AreEqual("Fizz", _fizzBuzzService.FizzSpecification(3));
+            Assert.AreEqual("Fizz", _fizzBuzzService.FizzSpecification(6));
+            Assert.AreEqual("Fizz", _fizzBuzzService.FizzSpecification(9));
+        }
     }
 }
