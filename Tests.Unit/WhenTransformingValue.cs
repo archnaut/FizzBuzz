@@ -50,9 +50,9 @@ namespace Tests.Unit
 
         public void GivenValueDivisibleByThree()
         {
-            Assert.AreEqual("Fizz", _fizzBuzzService.FizzSpecification(3));
-            Assert.AreEqual("Fizz", _fizzBuzzService.FizzSpecification(6));
-            Assert.AreEqual("Fizz", _fizzBuzzService.FizzSpecification(9));
+            Assert.AreEqual("Fizz", _fizzBuzzService.Transform(3));
+            Assert.AreEqual("Fizz", _fizzBuzzService.Transform(6));
+            Assert.AreEqual("Fizz", _fizzBuzzService.Transform(9));
         }
     }
 }
