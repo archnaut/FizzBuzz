@@ -10,11 +10,22 @@ namespace FizzBuzz
     {
         public string Transform(int value)
         {
-            string result = string.Empty;
-            if (value % 3 == 0) { result = "Fizz"; }
-            if (value % 5 == 0) { result += "Buzz"; }
-            if (result == string.Empty) { result = value.ToString(); }
-            return result;
+            var buzzSpec = new BuzzSpecification();
+            var fizzSpec = new FizzSpecification();
+
+            if (fizzSpec.IsMatch(value) && buzzSpec.IsMatch(value)) {
+                return "FizzBuzz";
+            }
+
+            if (fizzSpec.IsMatch(value)) { 
+                return "Fizz";
+            }
+
+            if (buzzSpec.IsMatch(value)) { 
+                return "Buzz"; 
+            }
+
+            return value.ToString();
         }
     }
 }
