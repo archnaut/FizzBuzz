@@ -10,7 +10,7 @@ namespace FizzBuzz
     {
         public bool IsMatch(int candidate)
         {
-            throw new NotImplementedException();
+            return candidate % 5 == 0 && candidate % 3 != 0;
         }
     }
 }
