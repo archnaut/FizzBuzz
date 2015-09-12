@@ -34,13 +34,5 @@ namespace Tests.Unit
             Assert.IsTrue(_buzzSpec.IsMatch(10));
             Assert.IsTrue(_buzzSpec.IsMatch(20));
         }
-
-        [TestMethod]
-        public void GivenValueDivisibleByThreeAndFive()
-        {
-            Assert.IsFalse(_buzzSpec.IsMatch(15));
-            Assert.IsFalse(_buzzSpec.IsMatch(30));
-            Assert.IsFalse(_buzzSpec.IsMatch(45));
-        }
     }
 }
