@@ -12,5 +12,10 @@ namespace FizzBuzz
         {
             return candidate % 3 == 0;
         }
+
+        public ISpecification<int> And(BuzzSpecification spec)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
