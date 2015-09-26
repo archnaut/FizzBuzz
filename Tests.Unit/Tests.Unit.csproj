@@ -50,7 +50,6 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="WhenEvaluatingFizzBuzzSpecification.cs" />
     <Compile Include="WhenEvaluatingBuzzSpecification.cs" />
     <Compile Include="WhenEvaluatingFizzSpecification.cs" />
     <Compile Include="WhenProgramIsRun.cs" />
