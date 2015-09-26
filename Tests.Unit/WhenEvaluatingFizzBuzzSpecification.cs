@@ -9,30 +9,42 @@ using System.Threading.Tasks;
 namespace Tests.Unit
 {
     [TestClass]
-    public class WhenEvaluatingBuzzSpecification
+    public class WhenEvaluatingFizzBuzzSpecification
     {
-        private BuzzSpecification _buzzSpec;
+        private ISpecification<int> _fizzBuzzSpec;
+        
 
         [TestInitialize]
         public void Initialize()
         {
-            _buzzSpec = new BuzzSpecification();
+            var fizzSpec = new FizzSpecification();
+            var buzzSpec = new BuzzSpecification();
+
+            _fizzBuzzSpec = fizzSpec.And(buzzSpec);
         }
 
         [TestMethod]
-        public void GivenValueDivisibleByThree()
+        public void GivenValueDivisibleByThreeAndNotFize()
         {
-            Assert.IsFalse(_buzzSpec.IsMatch(3));
-            Assert.IsFalse(_buzzSpec.IsMatch(6));
-            Assert.IsFalse(_buzzSpec.IsMatch(9));
+            Assert.IsFalse(_fizzBuzzSpec.IsMatch(3));
+            Assert.IsFalse(_fizzBuzzSpec.IsMatch(6));
+            Assert.IsFalse(_fizzBuzzSpec.IsMatch(9));
         }
 
         [TestMethod]
-        public void GivenValueDivisibleByFive()
+        public void GivenValueDivisibleByFiveAndNotThree()
         {
-            Assert.IsTrue(_buzzSpec.IsMatch(5));
-            Assert.IsTrue(_buzzSpec.IsMatch(10));
-            Assert.IsTrue(_buzzSpec.IsMatch(20));
+            Assert.IsFalse(_fizzBuzzSpec.IsMatch(5));
+            Assert.IsFalse(_fizzBuzzSpec.IsMatch(10));
+            Assert.IsFalse(_fizzBuzzSpec.IsMatch(20));
+        }
+
+        [TestMethod]
+        public void GivenValueDivisibleByThreeAndFive()
+        {
+            Assert.IsTrue(_fizzBuzzSpec.IsMatch(15));
+            Assert.IsTrue(_fizzBuzzSpec.IsMatch(30));
+            Assert.IsTrue(_fizzBuzzSpec.IsMatch(45));
         }
     }
 }
