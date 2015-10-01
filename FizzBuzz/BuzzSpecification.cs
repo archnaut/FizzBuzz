@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FizzBuzz
 {
-    internal class BuzzSpecification
+    internal class BuzzSpecification : ISpecification<int>
     {
         public bool IsMatch(int candidate)
         {
