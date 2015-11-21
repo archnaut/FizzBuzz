@@ -25,9 +25,9 @@ namespace Tests.Unit
             var left = new TrueSpecification();
             var right = new TrueSpecification();
 
-            ISpecification<string> spec = new AndSpecification<string>(left, right);
+            ISpecification<string> spec = left.And(right);
 
-            Assert.IsTrue(spec.IsMatch("ignored"));
+            Assert.IsTrue(spec.IsMatch("Always True"));
         }
 
         [TestMethod]
@@ -36,7 +36,7 @@ namespace Tests.Unit
             var left = new TrueSpecification();
             var right = new FalseSpecification();
 
-            ISpecification<string> spec = new AndSpecification<string>(left, right);
+            ISpecification<string> spec = left.And(right);
 
             Assert.IsFalse(spec.IsMatch("ignored"));
         }
@@ -47,7 +47,7 @@ namespace Tests.Unit
             var left = new FalseSpecification();
             var right = new TrueSpecification();
 
-            ISpecification<string> spec = new AndSpecification<string>(left, right);
+            ISpecification<string> spec = left.And(right);
 
             Assert.IsFalse(spec.IsMatch("ignored"));
         }
@@ -58,7 +58,7 @@ namespace Tests.Unit
             var left = new FalseSpecification();
             var right = new FalseSpecification();
 
-            ISpecification<string> spec = new AndSpecification<string>(left, right);
+            ISpecification<string> spec = left.And(right);
 
             Assert.IsFalse(spec.IsMatch("ignored"));
         }
@@ -66,20 +66,21 @@ namespace Tests.Unit
         /// <summary>
         /// For testing will ignore candidate and always return true
         /// </summary>
-        private class TrueSpecification : ISpecification<string>
+        private class TrueSpecification : AbstractSpecification<string>
         {
-            public bool IsMatch(string candidate)
+            public override bool IsMatch(string candidate)
             {
                 return true;
             }
+
         }
 
         /// <summary>
         /// For testing will ignore candidate and always return false
         /// </summary>
-        private class FalseSpecification : ISpecification<string>
+        private class FalseSpecification : AbstractSpecification<string>
         {
-            public bool IsMatch(string candidate)
+            public override bool IsMatch(string candidate)
             {
                 return false;
             }

@@ -6,16 +6,11 @@ using System.Threading.Tasks;
 
 namespace FizzBuzz
 {
-    internal class FizzSpecification : ISpecification<int>
+    internal class FizzSpecification : AbstractSpecification<int>
     {
-        public bool IsMatch(int candidate)
+        public override bool IsMatch(int candidate)
         {
             return candidate % 3 == 0;
-        }
-
-        public ISpecification<int> And(BuzzSpecification spec)
-        {
-            throw new NotImplementedException();
-        }
+        } 
     }
 }

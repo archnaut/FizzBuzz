@@ -13,7 +13,7 @@ namespace FizzBuzz
             var buzzSpec = new BuzzSpecification();
             var fizzSpec = new FizzSpecification();
 
-            if (fizzSpec.IsMatch(value) && buzzSpec.IsMatch(value)) {
+            if (buzzSpec.And(fizzSpec).IsMatch(value)) {
                 return "FizzBuzz";
             }
 

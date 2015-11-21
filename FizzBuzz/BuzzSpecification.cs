@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace FizzBuzz
 {
-    internal class BuzzSpecification : ISpecification<int>
+    internal class BuzzSpecification : AbstractSpecification<int>
     {
-        public bool IsMatch(int candidate)
+        public override bool IsMatch(int candidate)
         {
             return candidate % 5 == 0;
         }
